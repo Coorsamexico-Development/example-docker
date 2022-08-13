@@ -12,6 +12,11 @@ COPY . /app
 RUN sh -c "wget http://getcomposer.org/composer.phar && chmod a+x composer.phar && mv composer.phar /usr/local/bin/composer"
 RUN cd /app && \
     /usr/local/bin/composer install --no-dev
+RUN apt-get update \
+    && apt-get install -y nodejs \
+    && npm install -g npm
+RUN cd /app && \
+    /usr/local/bin/npm build
 
 RUN chown -R www-data: /app
 
