@@ -61,7 +61,7 @@ RUN composer install --ignore-platform-reqs --optimize-autoloader --no-dev
 RUN echo "building Prod with composer and npm"
 #COPY --chown=${USERNAME}:${USERNAME} .env.production $APP_HOME/.env
 
-RUN chown -R root /var/www/html
+# RUN chown -R root /var/www/html
 RUN chown -R www-data: /var/www/html
 RUN php artisan optimize:clear
 RUN php artisan storage:link
